@@ -1,0 +1,33 @@
+Zadanie 2
+
+select firstName, lastName, offices.country, count(customers.customerNumber)
+from employees
+join offices on employees.officeCode = offices.officeCode
+join customers on customers.salesRepEmployeeNumber = employees.employeeNumber
+group by employees.employeeNumber;
+
+Zadanie 4
+
+a.
+
+select year(orderDate) orderYear, sum(quantityOrdered) quantity from products
+join orderdetails on orderdetails.productCode = products.productCode
+join orders on orders.orderNumber = orderdetails.orderNumber
+where productName like "1969 Harley Davidson%"
+group by orderYear
+
+b.
+
+select year(orderDate) orderYear, sum(priceEach * quantityOrdered) total from products
+join orderdetails on orderdetails.productCode = products.productCode
+join orders on orders.orderNumber = orderdetails.orderNumber
+where productName like "1969 Harley Davidson%"
+group by orderYear
+
+c.
+
+select productlines.productLine, count(products.productCode) productCount
+from products
+join productlines on products.productLine = productlines.productLine
+group by productlines.productLine
+having count(products.productCode) > 10
