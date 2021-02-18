@@ -31,3 +31,5 @@ from products
 join productlines on products.productLine = productlines.productLine
 group by productlines.productLine
 having count(products.productCode) > 10
+
+Link GitHub: https://github.com/AngieGolis/wou-itz-2021-02-19
